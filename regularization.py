@@ -28,10 +28,18 @@ def compute_reg(args, model, meter, eps, eps_scheduler):
     loss_tightness, loss_std, loss_relu, loss_ratio = (l0.clone() for i in range(4))
 
     if isinstance(model, BoundDataParallel):
-        modules = list(model._modules.values())[0]._modules
+        bounded = list(model._modules.values())[0]
     else:
-        modules = model._modules
-    node_inp = modules['/input.1']
+        bounded = model
+    modules = bounded._modules
+    # Compatibility: older PyTorch/auto_LiRPA named the input node "/input.1",
+    # newer versions name it "/input-1"; fall back to the graph's first input.
+    for input_key in ('/input.1', '/input-1'):
+        if input_key in modules:
+            break
+    else:
+        input_key = bounded.input_name[0]
+    node_inp = modules[input_key]
     tightness_0 = ((node_inp.upper - node_inp.lower) / 2).mean()
     ratio_init = tightness_0 / ((node_inp.upper + node_inp.lower) / 2).std()
     cnt_layers = 0
