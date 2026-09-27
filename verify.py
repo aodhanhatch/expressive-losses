@@ -58,6 +58,8 @@ def main(args):
         # see https://pytorch.org/docs/stable/notes/cuda.html#tf32-on-ampere
         torch.backends.cuda.matmul.allow_tf32 = False
         torch.backends.cudnn.allow_tf32 = False
+        # WSL2: cap PyTorch at 80% of GPU memory so CUDA never spills into host RAM (which bluescreens the host)
+        torch.cuda.set_per_process_memory_fraction(0.8)
 
     config = load_config(args.config)
     bound_config = config['bound_params']
