@@ -149,6 +149,32 @@ def train_or_test(model, model_ori, t, loader, eps_scheduler, opt):
             else:
                 lb = robust_loss = robust_err = None
 
+            if not train and i == 0 and k == 0:
+                print("\n--- FIRST EVAL BATCH---")
+                print("Input shape:", tuple(data.shape))
+                print("Output shape:", tuple(output.shape))
+                print("Device:", data.device)
+                print("Epsilon:", eps)
+
+                print("First 5 true labels:", labels[:5].tolist())
+                print("First 5 clean predictions:",
+                      output.argmax(dim=1)[:5].tolist())
+
+                print("Natural loss:", regular_ce.item())
+                print("Adversarial loss:", adv_loss.item())
+                print("Bound-derived robust loss:", robust_loss.item())
+
+                print("Margin-bound shape:", tuple(lb.shape))
+                print("First image's margin lower bounds:", lb[0].detach().cpu().tolist())
+
+                certified = (lb >= 0).all(dim=1)
+                print("Certified images:", certified.sum().item(), "/", data.size(0))
+
+                print("Adversarial inputs within allowed bounds:", bool(((adv_data >= data_lb - 1e-6) & (adv_data <= data_ub + 1e-6)).all().item()))
+                print("--- END INSPECTION ---\n")
+                      
+
+
             update_meter(meter, regular_ce, robust_loss, adv_loss, regular_err, robust_err, adv_err, data.size(0))
 
             if train:
