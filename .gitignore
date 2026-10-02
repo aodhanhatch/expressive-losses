@@ -8,3 +8,11 @@ model_smoke/
 model_cifar/
 trained_models_info.txt
 wandb/
+
+# Reproduction artefacts too large or too local for git
+*_ckpt_last
+*_ckpt_last.bak
+model_cifar_smoke/
+crashlog.txt
+verify_*.log
+.vscode/
