@@ -1,10 +1,14 @@
-# Summarise verify.py results: python ~/projects/summarize_ver.py <ver_folder> [n_images]
+# Summarise verify.py results: python reproduction/summarize_ver.py <ver_folder> [n_images]
 import sys, os, glob, pickle
 d = sys.argv[1]
 n = int(sys.argv[2]) if len(sys.argv) > 2 else None
+if not os.path.isdir(d):
+    sys.exit("No such folder: " + d + ". Each model has its own checkpoint number; list them with: ls -d model_cifar_*/*_ver")
 files = {int(os.path.basename(f)[:-2]): f for f in glob.glob(os.path.join(d, "*.p"))}
 idx = sorted(i for i in files if n is None or i < n)
-top = n if n else (max(idx) + 1 if idx else 0)
+if not idx:
+    sys.exit("No result files (*.p) found in " + d)
+top = n if n else max(idx) + 1
 missing = [i for i in range(top) if i not in files]
 rows = [pickle.load(open(files[i], "rb")) for i in idx]
 N = len(rows)

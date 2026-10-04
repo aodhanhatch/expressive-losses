@@ -12,12 +12,13 @@ Numbers below are from `python reproduction/summarize_ver.py <ver_folder> 1000`.
 |---------|-----------------:|------------------:|----------------:|-----------------------:|----------------:|-----------------:|
 | CC-IBP  | 81.00 | 80.09 | 70.90 | 53.50 | 63.70 | 63.78 |
 | MTL-IBP | 80.30 | 80.11 | 70.30 | 51.90 | 63.80 | 63.24 |
-| Exp-IBP | (pending) | 80.61 | | | | 61.65 |
+| Exp-IBP | 79.90 | 80.61 | 69.00 | 51.80 | 62.90 | 61.65 |
 
-IBP-only verified accuracy is 0.00% for both models at this radius.
+IBP-only verified accuracy is 0.00% for all three models at this radius.
 Standard error on a 1000-image subset is about 1.5 points for rates near 60-80%.
 
 Result folders (one pickle per image, fields ok / pgd_ok / ibp_ok / crown_ok / ver_ok):
 - `model_cifar_ccibp/cnn_fast_1790529581_ckpt_last_ver/`
 - `model_cifar_mtlibp/cnn_fast_1790709178_ckpt_last_ver/`
+- `model_cifar_expibp/cnn_fast_1791026615_ckpt_last_ver/`
 Checkpoints are not in git (200 MB each); backed up outside the repo.

@@ -1,0 +1,50 @@
+INFO     2026-10-03 12:23:35,352 Arguments: Namespace(debug=False, verify=False, load='', config='config/cifar_2_255.json', device='cuda', log_interval=1000, seed=None, dir='model_cifar_expibp', model='cnn', loss_fusion=False, num_epochs=160, auto_load=False, method='fast', test_interval=20, plot=False, natural=False, check_nan=False, w_scale_cls=100, multi_gpu=False, no_loss_fusion=False, save_all=False, model_params='', mode='cert', eval=False, wandb_label=None, valid_share=None, valid_shuffle=False, log_losses_on_train=False, disable_train_tf32=False, random_crop=2, num_class=10, no_data_aug=False, test_batch_size=None, batch_size=None, data_loader_workers=0, eps=None, min_eps=0, init_eps=None, fix_eps=False, scheduler_name='SmoothedScheduler', scheduler_opts='start=2,length=80', train_eps_mul=1.0, lr=0.0005, lr_decay_factor=0.2, lr_decay_milestones='120,140', opt='Adam', momentum=0.9, grad_norm=10.0, weight_decay=0, grad_acc_steps=1, loss='ce', reg_obj=['relu', 'tightness'], reg_lambda=0.5, reg=True, ccibp=False, ccibp_coeff=0, mtlibp=False, mtlibp_coeff=0, expibp=True, expibp_coeff=0.095, sabr=False, sabr_coeff=0, l1_coeff=4e-06, min_eps_reg=1e-06, tol=0.5, num_reg_epochs=81, no_reg_dec=False, manual_init=True, init_method='ibp', kaiming_init=False, no_init=False, length=None, bounding_algorithm='IBP', lip=False, global_lip=False, train_att_n_steps=8, train_att_step_size=0.25, test_att_n_steps=40, test_att_step_size=0.1, attack_eps_factor=2.1, oval_bab_config=None, oval_bab_timeout=60, ib_batch_size=512, start_idx=0, end_idx=-1, no_load=False, crown_ver=False, lirpa_crown_batch=None, aux_label=None)
+INFO     2026-10-03 12:23:35,353 Loading config file: config/cifar_2_255.json
+INFO     2026-10-03 12:23:35,353 config: {"data": "CIFAR", "seed": 100, "training_params": {"method": "robust", "batch_size": 128}, "bound_params": {"eps": 0.00784, "bound_opts": {"relu": "adaptive", "exp": "clamp_constant"}}, "batch_size": 128}
+INFO     2026-10-03 12:23:35,465 Model structure: 
+ Sequential(
+  (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (2): ReLU()
+  (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (5): ReLU()
+  (6): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (8): ReLU()
+  (9): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (10): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (11): ReLU()
+  (12): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (13): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (14): ReLU()
+  (15): Flatten()
+  (16): Linear(in_features=32768, out_features=512, bias=True)
+  (17): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (18): ReLU()
+  (19): Linear(in_features=512, out_features=10, bias=True)
+)
+INFO     2026-10-03 12:23:37,801 Parameter shapes: [torch.Size([64, 3, 3, 3]), torch.Size([64]), torch.Size([64]), torch.Size([64]), torch.Size([64, 64, 3, 3]), torch.Size([64]), torch.Size([64]), torch.Size([64]), torch.Size([128, 64, 3, 3]), torch.Size([128]), torch.Size([128]), torch.Size([128]), torch.Size([128, 128, 3, 3]), torch.Size([128]), torch.Size([128]), torch.Size([128]), torch.Size([128, 128, 3, 3]), torch.Size([128]), torch.Size([128]), torch.Size([128]), torch.Size([512, 32768]), torch.Size([512]), torch.Size([512]), torch.Size([512]), torch.Size([10, 512]), torch.Size([10])]
+INFO     2026-10-03 12:23:37,801 Optimizer Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    decoupled_weight_decay: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.0005
+    maximize: False
+    weight_decay: 0
+)
+INFO     2026-10-03 12:52:53,834 
+INFO     2026-10-03 13:22:05,868 
+INFO     2026-10-03 13:56:17,875 
+INFO     2026-10-03 14:33:07,455 
+INFO     2026-10-03 15:09:48,091 
+INFO     2026-10-03 15:46:28,460 
+INFO     2026-10-03 16:12:40,464 
+INFO     2026-10-03 16:39:05,527 
+INFO     2026-10-03 16:39:05,527 Trained model checkpoint: model_cifar_expibp/cnn_fast_1791026615_ckpt_last
