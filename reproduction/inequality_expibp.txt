@@ -1,0 +1,22 @@
+/home/aodhan/miniforge3/envs/expressive-losses/lib/python3.11/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Regularizer: False
+Manual initialization: False
+INFO     09:05:52     Loading config file: config/cifar_2_255.json
+INFO     09:05:52     Checkpoint loaded: model_cifar_expibp/cnn_fast_1791026615_ckpt_last, epoch 160
+images: 1000
+L_adv mean 0.8121    L_ver mean 13.5398
+sanwich precondition z_bar <= z_adv violated on 0 images
+ alpha | MTL-CC mean  MTL-CC min  viol | MTL-Exp mean MTL-Exp min  viol | sandwich viol
+---------------------------------------------------------------------------------------
+ 0.000 |     0.00000    0.00e+00     0 |     -0.00000   -8.88e-16     0 |             0
+ 0.004 |     0.02866    3.81e-04     0 |      0.04329    2.57e-03     0 |             0
+ 0.010 |     0.07083    9.38e-04     0 |      0.10808    6.38e-03     0 |             0
+ 0.050 |     0.32659    4.26e-03     0 |      0.53523    3.09e-02     0 |             0
+ 0.095 |     0.56180    7.33e-03     0 |      1.00487    5.64e-02     0 |             0
+ 0.100 |     0.58456    7.63e-03     0 |      1.05627    5.90e-02     0 |             0
+ 0.250 |     0.98581    1.43e-02     0 |      2.50937    1.27e-01     0 |             0
+ 0.500 |     0.90477    1.75e-02     0 |      4.32369    1.78e-01     0 |             0
+ 0.750 |     0.51812    1.12e-02     0 |      4.47306    1.40e-01     0 |             0
+ 0.900 |     0.22134    5.07e-03     0 |      2.72323    6.95e-02     0 |             0
+ 1.000 |     0.00000    0.00e+00     0 |     -0.00000   -3.55e-15     0 |             0
