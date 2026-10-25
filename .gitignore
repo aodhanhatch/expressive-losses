@@ -16,3 +16,4 @@ model_cifar_smoke/
 crashlog.txt
 verify_*.log
 .vscode/
+current_domain_files/
